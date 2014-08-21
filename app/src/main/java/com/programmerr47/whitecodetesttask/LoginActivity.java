@@ -12,7 +12,6 @@ import com.programmerr47.whitecodetesttask.util.Utils;
 
 
 public class LoginActivity extends Activity {
-
     WebView mLoginWebView;
 
     @Override

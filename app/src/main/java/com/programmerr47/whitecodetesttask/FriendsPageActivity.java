@@ -32,6 +32,17 @@ public class FriendsPageActivity extends Activity{
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_LOGIN_CODE) {
+            if (resultCode == RESULT_OK) {
+//                mAccount.setAccessToken(data.getStringExtra());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
     private void openLoginPage() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivityForResult(intent, REQUEST_LOGIN_CODE);
