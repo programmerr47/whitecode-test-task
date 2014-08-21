@@ -4,14 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.programmerr47.whitecodetesttask.util.Constants;
-import com.programmerr47.whitecodetesttask.util.Utils;
+import com.programmerr47.whitecodetesttask.api.AuthorizationUtils;
+import com.programmerr47.whitecodetesttask.api.util.Permissions;
+import com.programmerr47.whitecodetesttask.util.ApiConstants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LoginActivity extends Activity {
+    public static final String INTENT_RESULT_ACCESS_TOKEN = "INTENT_RESULT_ACCESS_TOKEN";
+    public static final String INTENT_RESULT_USER_ID = "INTENT_RESULT_USER_ID";
+
     WebView mLoginWebView;
 
     @Override
@@ -30,6 +38,12 @@ public class LoginActivity extends Activity {
                 parseUrl(url);
             }
         });
+
+        List<Permissions> permissions = new ArrayList<Permissions>();
+        permissions.add(Permissions.friends);
+
+        Log.v("DEBUG", "url = " + AuthorizationUtils.getUrl(ApiConstants.API_KEY, permissions));
+        mLoginWebView.loadUrl(AuthorizationUtils.getUrl(ApiConstants.API_KEY, permissions));
     }
 
     private void parseUrl(String url) {
@@ -38,13 +52,13 @@ public class LoginActivity extends Activity {
                 return;
             }
 
-            if(url.startsWith(Constants.VK_REDIRECT_URL))
+            if(url.startsWith(AuthorizationUtils.VK_REDIRECT_URL))
             {
                 if(!url.contains("error=")){
-                    String[] auth = parseRedirectUrl(url);
+                    String[] auth = AuthorizationUtils.parseRedirectUrl(url);
                     Intent intent = new Intent();
-                    intent.putExtra("token", auth[0]);
-                    intent.putExtra("user_id", Long.parseLong(auth[1]));
+                    intent.putExtra(INTENT_RESULT_ACCESS_TOKEN, auth[0]);
+                    intent.putExtra(INTENT_RESULT_USER_ID, auth[1]);
                     setResult(Activity.RESULT_OK, intent);
                 }
                 finish();
@@ -52,17 +66,5 @@ public class LoginActivity extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private String[] parseRedirectUrl(String url) throws Exception {
-        //url is something like http://api.vkontakte.ru/blank.html#access_token=66e8f7a266af0dd477fcd3916366b17436e66af77ac352aeb270be99df7deeb&expires_in=0&user_id=7657164
-        String access_token = Utils.extractPattern(url, "access_token=(.*?)&");
-        String user_id = Utils.extractPattern(url, "user_id=(\\d*)");
-
-        if(user_id == null || user_id.length() == 0 || access_token == null || access_token.length() == 0) {
-            throw new Exception("Failed to parse redirect url "+url);
-        }
-
-        return new String[]{access_token, user_id};
     }
 }

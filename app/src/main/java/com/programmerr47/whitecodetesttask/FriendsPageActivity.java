@@ -36,7 +36,9 @@ public class FriendsPageActivity extends Activity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_LOGIN_CODE) {
             if (resultCode == RESULT_OK) {
-//                mAccount.setAccessToken(data.getStringExtra());
+                mAccount.setAccessToken(data.getStringExtra(LoginActivity.INTENT_RESULT_ACCESS_TOKEN));
+                mAccount.setUserId(data.getStringExtra(LoginActivity.INTENT_RESULT_USER_ID));
+                mAccount.save();
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
