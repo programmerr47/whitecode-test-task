@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">WhitecodeTestTask</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="ABOUT">About</string>
+    <string name="LOGIN_SHORT_INFORMATION">Logged as: %1$s</string>
+    <string name="LOGIN_SHORT_INFORMATION_ALTERNATIVE">You not logged in vk.com</string>
+    <string name="LOGOUT">Logout</string>
+    <string name="PULL_TO_REFRESH">Pull to refresh friend list</string>
+    <string name="REFRESHING_FRIEND_LIST">Refreshing friend list</string>
 
 </resources>

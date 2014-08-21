@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray">#BEBEBE</color>
+    <color name="gray_dark_very">#505050</color>
+    <color name="gray_light_very">#E5E5E5</color>
+    <color name="violet_light_graylish">#E0DCE3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_mostly_primary">#FAFAFA</color>
+    <color name="white_mostly_secondary">#F5F5F5</color>
+</resources>
