@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 
 /**
@@ -19,7 +20,7 @@ public class FriendsPageFragment extends Fragment{
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ListView mListView;
-    private BaseAdapter mListAdapter;
+    private CursorAdapter mListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
