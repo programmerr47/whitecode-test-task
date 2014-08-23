@@ -45,38 +45,47 @@ public class University {
         this.graduationYear = builder.graduationYear;
     }
 
+    @SuppressWarnings("unused")
     public String getId() {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public String getCountryId() {
         return countryId;
     }
 
+    @SuppressWarnings("unused")
     public String getCityId() {
         return cityId;
     }
 
+    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
 
+    @SuppressWarnings("unused")
     public String getFacultyId() {
         return facultyId;
     }
 
+    @SuppressWarnings("unused")
     public String getFacultyName() {
         return facultyName;
     }
 
+    @SuppressWarnings("unused")
     public String getChairId() {
         return chairId;
     }
 
+    @SuppressWarnings("unused")
     public String getChairName() {
         return chairName;
     }
 
+    @SuppressWarnings("unused")
     public int getGraduationYear() {
         return graduationYear;
     }
@@ -149,6 +158,7 @@ public class University {
      * @param jsonObject - given JSON object
      * @return new instance of University or null, if json is null
      */
+    @SuppressWarnings("unused")
     public static University getFromJSONObject(JSONObject jsonObject) {
         if (jsonObject == null) {
             return null;
@@ -173,6 +183,7 @@ public class University {
      * @param jsonArray - given JSON array
      * @return new instance of University or null, if json is null
      */
+    @SuppressWarnings("unused")
     public static List<University> getFromJSONArray(JSONArray jsonArray) {
         if (jsonArray == null) {
             return null;

@@ -34,4 +34,19 @@ public class User {
     private static final String HAS_MOBILE_TAG = "has_mobile";
     private static final String MOBILE_PHONE_TAG = "mobile_phone";
     private static final String HOME_PHONE_TAG = "home_phone";
+    private static final String SITE_TAG = "site";
+    private static final String UNIVERSITY_TAG = "university";
+    private static final String UNIVERSITY_NAME_TAG = "university_name";
+    private static final String FACULTY_TAG = "faculty";
+    private static final String FACULTY_NAME_TAG = "faculty_name";
+    private static final String GRADUATION_TAG = "graduation";
+    private static final String UNIVERSITIES_TAG = "universities";
+    private static final String SCHOOLS_TAG = "schools";
+    private static final String STATUS_TAG = "status";
+    private static final String STATUS_AUDIO_TAG = "status_audio";
+    private static final String LAST_SEEN_TAG = "last_seen";
+    private static final String FOLLOWERS_COUNT_TAG = "followers";
+    private static final String COMMON_COUNT_TAG = "common_count";
+    private static final String COUNTERS_TAG = "counters";
+    private static final String OCCUPATION_TAG = "occupation";
 }
