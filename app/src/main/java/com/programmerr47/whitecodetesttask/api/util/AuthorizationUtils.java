@@ -1,13 +1,9 @@
-package com.programmerr47.whitecodetesttask.api;
+package com.programmerr47.whitecodetesttask.api.util;
 
-import com.programmerr47.whitecodetesttask.api.requestParams.AuthorizationParams;
-import com.programmerr47.whitecodetesttask.api.util.DisplayType;
-import com.programmerr47.whitecodetesttask.api.util.Permissions;
-import com.programmerr47.whitecodetesttask.util.Constants;
-import com.programmerr47.whitecodetesttask.util.Utils;
+import com.programmerr47.whitecodetesttask.api.requests.requestParams.AuthorizationParams;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.DisplayType;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.Permissions;
 
-import java.net.URLEncoder;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,10 +13,6 @@ import java.util.List;
  * @since 2014-08-21
  */
 public class AuthorizationUtils {
-    public static final String API_VERSION = "5.24";
-    public static final String VK_REDIRECT_URL = "https://oauth.vk.com/blank.html";
-    public static final String VK_AUTH_URL = "https://oauth.vk.com/authorize";
-
     private static final String ACCESS_TOKEN_PARAM_NAME = "access_token";
     private static final String USER_ID_PARAM_NAME = "user_id";
 
@@ -28,12 +20,12 @@ public class AuthorizationUtils {
         AuthorizationParams params = new AuthorizationParams.Builder()
                 .setAppId(api_id)
                 .setPermissions(permissions)
-                .setRedirectUrl(VK_REDIRECT_URL)
+                .setRedirectUrl(Constants.VK_REDIRECT_URL)
                 .setDisplayType(DisplayType.mobile)
-                .setApiVersion(API_VERSION)
+                .setApiVersion(Constants.API_VERSION)
                 .build();
 
-        return VK_AUTH_URL + Constants.REQUEST_PARAMS_BEGIN_SYMBOL + params;
+        return Constants.VK_AUTH_URL + Constants.REQUEST_PARAMS_BEGIN_SYMBOL + params;
     }
 
     public static String[] parseRedirectUrl(String url) throws Exception {

@@ -1,4 +1,4 @@
-package com.programmerr47.whitecodetesttask.api.util;
+package com.programmerr47.whitecodetesttask.api.accessoryEnums;
 
 /**
  * @author Michael Spitsin

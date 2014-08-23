@@ -23,13 +23,13 @@ public class University {
     private static final String CHAIR_NAME_TAG = "chair_name";
     private static final String GRADUATION_TAG = "graduation";
     
-    private String id;
-    private String countryId;
-    private String cityId;
+    private int id;
+    private int countryId;
+    private int cityId;
     private String name;
-    private String facultyId;
+    private int facultyId;
     private String facultyName;
-    private String chairId;
+    private int chairId;
     private String chairName;
     private int graduationYear;
 
@@ -46,17 +46,17 @@ public class University {
     }
 
     @SuppressWarnings("unused")
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     @SuppressWarnings("unused")
-    public String getCountryId() {
+    public int getCountryId() {
         return countryId;
     }
 
     @SuppressWarnings("unused")
-    public String getCityId() {
+    public int getCityId() {
         return cityId;
     }
 
@@ -66,7 +66,7 @@ public class University {
     }
 
     @SuppressWarnings("unused")
-    public String getFacultyId() {
+    public int getFacultyId() {
         return facultyId;
     }
 
@@ -76,7 +76,7 @@ public class University {
     }
 
     @SuppressWarnings("unused")
-    public String getChairId() {
+    public int getChairId() {
         return chairId;
     }
 
@@ -91,27 +91,27 @@ public class University {
     }
 
     private static class Builder {
-        private String id;
-        private String countryId;
-        private String cityId;
+        private int id;
+        private int countryId;
+        private int cityId;
         private String name;
-        private String facultyId;
+        private int facultyId;
         private String facultyName;
-        private String chairId;
+        private int chairId;
         private String chairName;
         private int graduationYear;
 
-        public Builder setId(String id) {
+        public Builder setId(int id) {
             this.id = id;
             return this;
         }
 
-        public Builder setCountryId(String countryId) {
+        public Builder setCountryId(int countryId) {
             this.countryId = countryId;
             return this;
         }
 
-        public Builder setCityId(String cityId) {
+        public Builder setCityId(int cityId) {
             this.cityId = cityId;
             return this;
         }
@@ -121,7 +121,7 @@ public class University {
             return this;
         }
 
-        public Builder setFacultyId(String facultyId) {
+        public Builder setFacultyId(int facultyId) {
             this.facultyId = facultyId;
             return this;
         }
@@ -131,7 +131,7 @@ public class University {
             return this;
         }
 
-        public Builder setChairId(String chairId) {
+        public Builder setChairId(int chairId) {
             this.chairId = chairId;
             return this;
         }
@@ -164,13 +164,13 @@ public class University {
             return null;
         } else {
             return new Builder()
-                    .setId(jsonObject.optString(ID_TAG, null))
-                    .setCountryId(jsonObject.optString(COUNTRY_TAG, null))
-                    .setCityId(jsonObject.optString(CITY_TAG, null))
+                    .setId(jsonObject.optInt(ID_TAG, 0))
+                    .setCountryId(jsonObject.optInt(COUNTRY_TAG, 0))
+                    .setCityId(jsonObject.optInt(CITY_TAG, 0))
                     .setName(jsonObject.optString(NAME_TAG, null))
-                    .setFacultyId(jsonObject.optString(FACULTY_TAG, null))
+                    .setFacultyId(jsonObject.optInt(FACULTY_TAG, 0))
                     .setFacultyName(jsonObject.optString(FACULTY_NAME_TAG, null))
-                    .setChairId(jsonObject.optString(CHAIR_TAG, null))
+                    .setChairId(jsonObject.optInt(CHAIR_TAG, 0))
                     .setChairName(jsonObject.optString(CHAIR_NAME_TAG, null))
                     .setGraduationYear(jsonObject.optInt(GRADUATION_TAG, 0))
                     .build();

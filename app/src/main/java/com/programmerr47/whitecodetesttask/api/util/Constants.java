@@ -1,4 +1,4 @@
-package com.programmerr47.whitecodetesttask.util;
+package com.programmerr47.whitecodetesttask.api.util;
 
 /**
  * Common class for all general constants in program.
@@ -7,7 +7,6 @@ package com.programmerr47.whitecodetesttask.util;
  * @since 2014-08-20
  */
 public class Constants {
-
     /**
      * Delimiter between all url and their params in GET requests.
      */
@@ -29,4 +28,9 @@ public class Constants {
     public static final String COMMA_SYMBOL = ",";
 
     public static final String SPACE_URL_ENCODING = "%20";
+
+    public static final String API_VERSION = "5.24";
+    public static final String VK_BASE_URL = "https://api.vk.com/method/";
+    public static final String VK_REDIRECT_URL = "https://oauth.vk.com/blank.html";
+    public static final String VK_AUTH_URL = "https://oauth.vk.com/authorize";
 }

@@ -1,4 +1,4 @@
-package com.programmerr47.whitecodetesttask.api.requestParams;
+package com.programmerr47.whitecodetesttask.api.requests.requestParams;
 
 /**
  * Main interface for all classes, that represents optional (and not) parameters of

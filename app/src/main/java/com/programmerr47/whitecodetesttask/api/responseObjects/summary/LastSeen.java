@@ -1,6 +1,6 @@
 package com.programmerr47.whitecodetesttask.api.responseObjects.summary;
 
-import com.programmerr47.whitecodetesttask.api.util.Platform;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.Platform;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,7 +68,7 @@ public class LastSeen {
         } else {
             return new Builder()
                     .setTime(jsonObject.optInt(TIME_TAG, 0))
-                    .setPlatform(Platform.getPlatformFromInt(jsonObject.optInt(PLATFORM_TAG, 7)))
+                    .setPlatform(Platform.getFromInt(jsonObject.optInt(PLATFORM_TAG, 7)))
                     .build();
         }
     }

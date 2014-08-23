@@ -1,14 +1,17 @@
-package com.programmerr47.whitecodetesttask;
+package com.programmerr47.whitecodetesttask.representation;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.programmerr47.whitecodetesttask.R;
 import com.programmerr47.whitecodetesttask.api.Account;
+import com.programmerr47.whitecodetesttask.api.requests.APIRequests;
+import com.programmerr47.whitecodetesttask.api.requests.requestParams.FriendsGetParams;
 
 /**
  * Activity for representing list (that contained and handled in {@link FriendsPageFragment})
@@ -34,7 +37,18 @@ public class FriendsPageActivity extends Activity{
         if (!mAccount.hasAccessToken()) {
             openLoginPage();
         }
+
+        final APIRequests requests = new APIRequests(mAccount);
+        final FriendsGetParams params = new FriendsGetParams.Builder().build();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.v("REQUESTS", "Response for all friends is: " + requests.getFriendsRequests().get(params));
+            }
+        }).start();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -61,6 +75,10 @@ public class FriendsPageActivity extends Activity{
                 mAccount.setAccessToken(data.getStringExtra(LoginActivity.INTENT_RESULT_ACCESS_TOKEN));
                 mAccount.setUserId(data.getStringExtra(LoginActivity.INTENT_RESULT_USER_ID));
                 mAccount.save();
+                Log.v("REQUESTS", "Access token = " + mAccount.getAccessToken());
+                Log.v("REQUESTS", "User id = " + mAccount.getUserId());
+                //0af9a261917d796eaa9583efbd51f96e788f28a3b8b8c1c3996cae1b98a4ee5bbff408d0ef77076d7e1dc
+                //42284313
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

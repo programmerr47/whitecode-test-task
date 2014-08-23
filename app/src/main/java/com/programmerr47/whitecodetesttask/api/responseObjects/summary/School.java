@@ -25,16 +25,16 @@ public class School {
     private static final String TYPE_TAG = "type";
     private static final String TYPE_STR_TAG = "type_str";
 
-    private String id;
-    private String countryId;
-    private String cityId;
+    private int id;
+    private int countryId;
+    private int cityId;
     private String name;
     private int yearFrom;
     private int yearTo;
     private int yearGraduated;
     private String schoolClass;
     private String speciality;
-    private String type;
+    private int typeId;
     private String typeStr;
 
     public School(Builder builder) {
@@ -47,22 +47,22 @@ public class School {
         this.yearGraduated = builder.yearGraduated;
         this.schoolClass = builder.schoolClass;
         this.speciality = builder.speciality;
-        this.type = builder.type;
+        this.typeId = builder.typeId;
         this.typeStr = builder.typeStr;
     }
 
     @SuppressWarnings("unused")
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     @SuppressWarnings("unused")
-    public String getCountryId() {
+    public int getCountryId() {
         return countryId;
     }
 
     @SuppressWarnings("unused")
-    public String getCityId() {
+    public int getCityId() {
         return cityId;
     }
 
@@ -97,8 +97,8 @@ public class School {
     }
 
     @SuppressWarnings("unused")
-    public String getType() {
-        return type;
+    public int getTypeId() {
+        return typeId;
     }
 
     @SuppressWarnings("unused")
@@ -107,29 +107,29 @@ public class School {
     }
 
     private static class Builder {
-        private String id;
-        private String countryId;
-        private String cityId;
+        private int id;
+        private int countryId;
+        private int cityId;
         private String name;
         private int yearFrom;
         private int yearTo;
         private int yearGraduated;
         private String schoolClass;
         private String speciality;
-        private String type;
+        private int typeId;
         private String typeStr;
     
-        public Builder setId(String id) {
+        public Builder setId(int id) {
             this.id = id;
             return this;
         }
     
-        public Builder setCountryId(String countryId) {
+        public Builder setCountryId(int countryId) {
             this.countryId = countryId;
             return this;
         }
     
-        public Builder setCityId(String cityId) {
+        public Builder setCityId(int cityId) {
             this.cityId = cityId;
             return this;
         }
@@ -164,8 +164,8 @@ public class School {
             return this;
         }
     
-        public Builder setType(String type) {
-            this.type = type;
+        public Builder setType(int typeId) {
+            this.typeId = typeId;
             return this;
         }
     
@@ -191,16 +191,16 @@ public class School {
             return null;
         } else {
             return new Builder()
-                    .setId(jsonObject.optString(ID_TAG, null))
-                    .setCountryId(jsonObject.optString(COUNTRY_TAG, null))
-                    .setCityId(jsonObject.optString(CITY_TAG, null))
+                    .setId(jsonObject.optInt(ID_TAG, 0))
+                    .setCountryId(jsonObject.optInt(COUNTRY_TAG, 0))
+                    .setCityId(jsonObject.optInt(CITY_TAG, 0))
                     .setName(jsonObject.optString(NAME_TAG, null))
                     .setYearFrom(jsonObject.optInt(YEAR_FROM_TAG, 0))
                     .setYearTo(jsonObject.optInt(YEAR_TO_TAG, 0))
                     .setYearGraduated(jsonObject.optInt(YEAR_GRADUATED_TAG, 0))
                     .setSchoolClass(jsonObject.optString(CLASS_TAG, null))
                     .setSpeciality(jsonObject.optString(SPECIALITY_TAG, null))
-                    .setType(jsonObject.optString(TYPE_TAG, null))
+                    .setType(jsonObject.optInt(TYPE_TAG, 0))
                     .setTypeStr(jsonObject.optString(TYPE_STR_TAG, null))
                     .build();
         }

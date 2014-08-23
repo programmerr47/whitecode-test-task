@@ -3,42 +3,49 @@
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swipeRefresh"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_mostly_primary">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/list_item_height_default"
-        android:background="@color/white_mostly_secondary">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/userShorInfoView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_default"
-            android:layout_marginRight="@dimen/spacing_half"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="@string/LOGIN_SHORT_INFORMATION"
-            style="@android:style/TextAppearance.Holo.Medium"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height_default"
+            android:orientation="horizontal"
+            android:background="@color/white_mostly_secondary">
 
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_half"
-            android:layout_marginTop="@dimen/spacing_half"
-            android:layout_marginBottom="@dimen/spacing_half"
-            android:layout_marginRight="@dimen/spacing_default"
-            android:text="@string/LOGOUT"/>
+            <TextView
+                android:id="@+id/userShorInfoView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_default"
+                android:layout_marginRight="@dimen/spacing_half"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/LOGIN_SHORT_INFORMATION"
+                style="@android:style/TextAppearance.Holo.Medium"/>
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacing_half"
+                android:layout_marginTop="@dimen/spacing_half"
+                android:layout_marginBottom="@dimen/spacing_half"
+                android:layout_marginRight="@dimen/spacing_default"
+                android:text="@string/LOGOUT"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/friendsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/friendsListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>

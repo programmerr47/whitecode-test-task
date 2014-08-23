@@ -1,4 +1,4 @@
-package com.programmerr47.whitecodetesttask.util;
+package com.programmerr47.whitecodetesttask.representation.util;
 
 /**
  * This class created for only one (in this case) constant, that holds

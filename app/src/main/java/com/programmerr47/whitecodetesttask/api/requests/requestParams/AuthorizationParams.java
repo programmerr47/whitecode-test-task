@@ -1,7 +1,7 @@
-package com.programmerr47.whitecodetesttask.api.requestParams;
+package com.programmerr47.whitecodetesttask.api.requests.requestParams;
 
-import com.programmerr47.whitecodetesttask.api.util.DisplayType;
-import com.programmerr47.whitecodetesttask.api.util.Permissions;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.DisplayType;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.Permissions;
 
 import java.util.List;
 

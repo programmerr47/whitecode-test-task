@@ -1,7 +1,5 @@
 package com.programmerr47.whitecodetesttask.api.responseObjects.summary;
 
-import com.programmerr47.whitecodetesttask.api.accessoryEnums.OccupationType;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -9,34 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Object for representing occupation from their database.
+ * Class for representing any relative of user.
  *
  * @author Michael Spitsin
  * @since 2014-08-23
  */
-public class Occupation {
-    private static final String TYPE_TAG = "type";
+public class Relative {
     private static final String ID_TAG = "id";
+    private static final String TYPE_TAG = "type";
     private static final String NAME_TAG = "name";
 
-    private OccupationType type;
-    private int id;
+    private int userId;
+    private String type;
     private String name;
 
-    private Occupation(Builder builder) {
+    private Relative(Builder builder) {
+        this.userId = builder.userId;
         this.type = builder.type;
-        this.id = builder.id;
         this.name = builder.name;
     }
 
     @SuppressWarnings("unused")
-    public OccupationType getType() {
-        return type;
+    public int getUserId() {
+        return userId;
     }
 
     @SuppressWarnings("unused")
-    public int getId() {
-        return id;
+    public String getType() {
+        return type;
     }
 
     @SuppressWarnings("unused")
@@ -45,17 +43,17 @@ public class Occupation {
     }
 
     private static class Builder {
-        private OccupationType type;
-        private int id;
+        private int userId;
+        private String type;
         private String name;
 
-        public Builder setType(OccupationType type) {
-            this.type = type;
+        public Builder setUserId(int userId) {
+            this.userId = userId;
             return this;
         }
 
-        public Builder setId(int id) {
-            this.id = id;
+        public Builder setType(String type) {
+            this.type = type;
             return this;
         }
 
@@ -64,42 +62,42 @@ public class Occupation {
             return this;
         }
 
-        public Occupation build() {
-            return new Occupation(this);
+        public Relative build() {
+            return new Relative(this);
         }
     }
 
     /**
-     * Creates {@link Occupation} object from its JSON Counterpart.
+     * Creates {@link Relative} object from its JSON Counterpart.
      *
      * @param jsonObject - given JSON object
-     * @return new instance of Occupation or null, if json is null
+     * @return new instance of Relative or null, if json is null
      */
     @SuppressWarnings("unused")
-    public static Occupation getFromJSONObject(JSONObject jsonObject) {
+    public static Relative getFromJSONObject(JSONObject jsonObject) {
         if (jsonObject == null) {
             return null;
         } else {
             return new Builder()
-                    .setType(OccupationType.valueOf(jsonObject.optString(TYPE_TAG, null)))
-                    .setId(jsonObject.optInt(ID_TAG, 0))
+                    .setUserId(jsonObject.optInt(ID_TAG, 0))
                     .setName(jsonObject.optString(NAME_TAG, null))
+                    .setType(jsonObject.optString(TYPE_TAG, null))
                     .build();
         }
     }
 
     /**
-     * Creates list of {@link Occupation} objects from its JSON Counterpart.
+     * Creates list of {@link Relative} objects from its JSON Counterpart.
      *
      * @param jsonArray - given JSON array
-     * @return new instance of Occupation or null, if json is null
+     * @return new instance of Relative or null, if json is null
      */
     @SuppressWarnings("unused")
-    public static List<Occupation> getFromJSONArray(JSONArray jsonArray) {
+    public static List<Relative> getFromJSONArray(JSONArray jsonArray) {
         if (jsonArray == null) {
             return null;
         } else {
-            List<Occupation> resultList = new ArrayList<Occupation>();
+            List<Relative> resultList = new ArrayList<Relative>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.optJSONObject(i);
                 if (jsonObject != null) {

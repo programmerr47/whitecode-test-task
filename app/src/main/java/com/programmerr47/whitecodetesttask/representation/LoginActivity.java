@@ -1,4 +1,4 @@
-package com.programmerr47.whitecodetesttask;
+package com.programmerr47.whitecodetesttask.representation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,9 +8,11 @@ import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.programmerr47.whitecodetesttask.api.AuthorizationUtils;
-import com.programmerr47.whitecodetesttask.api.util.Permissions;
-import com.programmerr47.whitecodetesttask.util.ApiConstants;
+import com.programmerr47.whitecodetesttask.R;
+import com.programmerr47.whitecodetesttask.api.util.AuthorizationUtils;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.Permissions;
+import com.programmerr47.whitecodetesttask.api.util.Constants;
+import com.programmerr47.whitecodetesttask.representation.util.ApiConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +54,7 @@ public class LoginActivity extends Activity {
                 return;
             }
 
-            if(url.startsWith(AuthorizationUtils.VK_REDIRECT_URL))
+            if(url.startsWith(Constants.VK_REDIRECT_URL))
             {
                 if(!url.contains("error=")){
                     String[] auth = AuthorizationUtils.parseRedirectUrl(url);

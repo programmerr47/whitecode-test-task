@@ -1,8 +1,8 @@
-package com.programmerr47.whitecodetesttask.api.requestParams;
+package com.programmerr47.whitecodetesttask.api.requests.requestParams;
 
-import com.programmerr47.whitecodetesttask.api.util.FriendInfoOptionalFields;
-import com.programmerr47.whitecodetesttask.api.util.FriendsOrder;
-import com.programmerr47.whitecodetesttask.api.util.NameCase;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendInfoOptionalFields;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendsOrder;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.NameCase;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @author Michael Spitsin
  * @since 2014-08-22
  */
-public class FriendsGetParams implements RequestParams{
+public class FriendsGetParams extends SignedUpParams{
     private static final String USER_ID_PARAM_NAME = "user_id";
     private static final String ORDER_PARAM_NAME = "order";
     private static final String LIST_ID_PARAM_NAME = "list_id";
@@ -27,7 +27,8 @@ public class FriendsGetParams implements RequestParams{
     private List<FriendInfoOptionalFields> fields;
     private NameCase nameCase;
 
-    private FriendsGetParams(Builder builder) {
+    protected FriendsGetParams(Builder builder) {
+        super(builder);
         this.userId = builder.userId;
         this.order = builder.order;
         this.listId = builder.listId;
@@ -39,7 +40,7 @@ public class FriendsGetParams implements RequestParams{
 
     @Override
     public String getQuery() {
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder(super.getQuery());
 
         ParamUtils.addParameterIfNeed(result, USER_ID_PARAM_NAME, userId);
         ParamUtils.addParameterIfNeed(result, ORDER_PARAM_NAME, order);
@@ -52,12 +53,7 @@ public class FriendsGetParams implements RequestParams{
         return ParamUtils.removeFirstCharacterIfDelimiter(result.toString());
     }
 
-    @Override
-    public String toString() {
-        return getQuery();
-    }
-
-    public static class Builder {
+    public static class Builder extends SignedUpParams.Builder{
         private String userId;
         private FriendsOrder order;
         private String listId;

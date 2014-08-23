@@ -1,11 +1,10 @@
-package com.programmerr47.whitecodetesttask.api.requestParams;
+package com.programmerr47.whitecodetesttask.api.requests.requestParams;
 
-import com.programmerr47.whitecodetesttask.util.Constants;
+import com.programmerr47.whitecodetesttask.api.util.Constants;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Common functions for request parameters.
@@ -92,7 +91,11 @@ class ParamUtils {
         return source;
     }
 
-    private static String formEnumerationValue(Collection<?> values) {
+    static String formEnumerationValue(Collection<?> values) {
+        if (values == null) {
+            return null;
+        }
+
         StringBuilder result = new StringBuilder();
 
         for(Object value : values) {

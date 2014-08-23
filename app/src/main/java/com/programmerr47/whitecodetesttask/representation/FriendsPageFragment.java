@@ -1,4 +1,4 @@
-package com.programmerr47.whitecodetesttask;
+package com.programmerr47.whitecodetesttask.representation;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 
+import com.programmerr47.whitecodetesttask.R;
+
 /**
  * Fragment that represents friend list of logged user.
  *
@@ -20,7 +22,7 @@ public class FriendsPageFragment extends Fragment{
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ListView mListView;
-    private CursorAdapter mListAdapter;
+    private BaseAdapter mListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
