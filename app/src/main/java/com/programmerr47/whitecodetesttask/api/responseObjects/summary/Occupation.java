@@ -81,7 +81,7 @@ public class Occupation {
             return null;
         } else {
             return new Builder()
-                    .setType(OccupationType.valueOf(jsonObject.optString(TYPE_TAG, null)))
+                    .setType(OccupationType.optValue(jsonObject.optString(TYPE_TAG, null)))
                     .setId(jsonObject.optInt(ID_TAG, 0))
                     .setName(jsonObject.optString(NAME_TAG, null))
                     .build();

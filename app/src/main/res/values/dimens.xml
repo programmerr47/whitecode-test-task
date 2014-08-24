@@ -7,4 +7,7 @@
     <!-- Default spacing between each elements. -->
     <dimen name="spacing_default">8dp</dimen>
     <dimen name="spacing_half">4dp</dimen>
+    <dimen name="online_phone_icon">16dp</dimen>
+    <dimen name="list_section_height_default">24dp</dimen>
+    <dimen name="section_divider_height">2dp</dimen>
 </resources>

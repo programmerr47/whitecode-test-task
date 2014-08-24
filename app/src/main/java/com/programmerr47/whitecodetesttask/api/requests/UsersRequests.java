@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2014-08-23
  */
 @SuppressWarnings("unused")
-class UsersRequests {
+public class UsersRequests {
     private static final String RESPONSE_TAG = "response";
 
     private static final String USERS_GET_METHOD_NAME = "users.get";

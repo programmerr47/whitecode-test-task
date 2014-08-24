@@ -45,13 +45,13 @@ public class Account {
     }
 
     /**
-     * Checks has object of the class access token or not.
+     * Checks has object all fields or not.
      *
-     * @return true, if access token exist or false otherwise
+     * @return true, if access toke and user id exist or false otherwise
      */
     @SuppressWarnings("unused")
-    public boolean hasAccessToken() {
-        return mAccessToken != null;
+    public boolean isCorrect() {
+        return (mAccessToken != null) && (mUserId != null);
     }
 
     /**
@@ -66,6 +66,23 @@ public class Account {
         editor.putString(USER_ID, mUserId);
 
         editor.apply();
+    }
+
+    /**
+     * Clear all data, that saved.
+     */
+    @SuppressWarnings("unused")
+    public void clear(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.remove(ACCESS_TOKEN);
+        editor.remove(USER_ID);
+
+        editor.apply();
+
+        mAccessToken = null;
+        mUserId = null;
     }
 
     /**

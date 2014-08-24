@@ -4,8 +4,9 @@ package com.programmerr47.whitecodetesttask.api.accessoryEnums;
  * @author Michael Spitsin
  * @since 2014-08-22
  */
-public enum FriendInfoOptionalFields {
+public enum FriendInfoOptionalField {
     nickname,
+    maiden_name,
     domain,
     sex,
     bdate,
@@ -19,6 +20,7 @@ public enum FriendInfoOptionalFields {
     contacts,
     education,
     online,
+    online_mobile,
     relation,
     last_seen,
     status,

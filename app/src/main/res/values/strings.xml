@@ -4,9 +4,12 @@
     <string name="app_name">WhitecodeTestTask</string>
 
     <string name="ABOUT">About</string>
-    <string name="LOGIN_SHORT_INFORMATION">Logged as: %1$s</string>
+    <string name="LOADING">Loading...</string>
+    <string name="LOGIN">Login</string>
     <string name="LOGIN_SHORT_INFORMATION_ALTERNATIVE">You not logged in vk.com</string>
     <string name="LOGOUT">Logout</string>
+    <string name="YOU_ARE_NOT_LOGIN">You are not login</string>
+    <string name="ONLINE_FLAG">Online</string>
     <string name="PULL_TO_REFRESH">Pull to refresh friend list</string>
     <string name="REFRESHING_FRIEND_LIST">Refreshing friend list</string>
 

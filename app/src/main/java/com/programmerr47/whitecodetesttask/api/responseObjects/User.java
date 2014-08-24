@@ -906,7 +906,7 @@ public class User {
                     .setCommonCount(jsonObject.optInt(COMMON_COUNT_TAG, 0))
                     .setCounters(Counters.getFromJSONObject(jsonObject.optJSONObject(COUNTERS_TAG)))
                     .setCountry(jsonObject.optString(COUNTRY_TAG, null))
-                    .setDeactivatedFlag(DeactivatedPageType.valueOf(jsonObject.optString(DEACTIVATED_TAG, null)))
+                    .setDeactivatedFlag(DeactivatedPageType.optValue(jsonObject.optString(DEACTIVATED_TAG, null)))
                     .setDomain(jsonObject.optString(DOMAIN_TAG, null))
                     .setFacultyId(jsonObject.optInt(FACULTY_TAG, 0))
                     .setFacultyName(jsonObject.optString(FACULTY_NAME_TAG, null))

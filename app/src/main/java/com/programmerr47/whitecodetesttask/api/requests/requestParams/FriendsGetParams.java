@@ -1,6 +1,6 @@
 package com.programmerr47.whitecodetesttask.api.requests.requestParams;
 
-import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendInfoOptionalFields;
+import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendInfoOptionalField;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendsOrder;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.NameCase;
 
@@ -24,7 +24,7 @@ public class FriendsGetParams extends SignedUpParams{
     private String listId;
     private String count;
     private String offset;
-    private List<FriendInfoOptionalFields> fields;
+    private List<FriendInfoOptionalField> fields;
     private NameCase nameCase;
 
     protected FriendsGetParams(Builder builder) {
@@ -36,6 +36,16 @@ public class FriendsGetParams extends SignedUpParams{
         this.offset = builder.offset;
         this.fields = builder.fields;
         this.nameCase = builder.nameCase;
+    }
+
+    @SuppressWarnings("unused")
+    public List<FriendInfoOptionalField> getFields() {
+        return fields;
+    }
+
+    @SuppressWarnings("unused")
+    public NameCase getNameCase() {
+        return nameCase;
     }
 
     @Override
@@ -59,7 +69,7 @@ public class FriendsGetParams extends SignedUpParams{
         private String listId;
         private String count;
         private String offset;
-        private List<FriendInfoOptionalFields> fields;
+        private List<FriendInfoOptionalField> fields;
         private NameCase nameCase;
 
         public Builder setUserId(String userId) {
@@ -87,7 +97,7 @@ public class FriendsGetParams extends SignedUpParams{
             return this;
         }
 
-        public Builder setFields(List<FriendInfoOptionalFields> fields) {
+        public Builder setFields(List<FriendInfoOptionalField> fields) {
             this.fields = fields;
             return this;
         }

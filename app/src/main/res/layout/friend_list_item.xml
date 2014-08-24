@@ -3,24 +3,60 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height_default"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/userIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="@dimen/spacing_half"
         android:layout_marginBottom="@dimen/spacing_half"
         android:src="@drawable/user_photo_thumb_default"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="@dimen/spacing_half"
-        android:gravity="center_horizontal"
-        android:text="Akakiy Akakievich"
-        android:singleLine="true"
-        style="@android:style/TextAppearance.Holo.Large"/>
+        android:layout_margin="@dimen/spacing_default"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/userFullNameView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height_default"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Akakiy Akakievich"
+            android:textColor="@color/gray_dark_very"
+            android:singleLine="true"
+            style="@style/ListItemTextLarge"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/onlinePhoneIcon"
+                android:layout_width="@dimen/online_phone_icon"
+                android:layout_height="@dimen/online_phone_icon"
+                android:src="@drawable/ic_online_mobile"
+                android:scaleType="fitCenter"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/onlineTextFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ONLINE_FLAG"
+                android:textColor="@color/gray"
+                android:visibility="gone"
+                style="@style/ListItemTextSmall"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

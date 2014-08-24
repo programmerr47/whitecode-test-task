@@ -41,6 +41,11 @@ public class FriendRequests {
             return null;
         }
 
-        return JSONUtil.getIntegerList(response.optJSONObject(RESPONSE_TAG).optJSONArray(ITEMS_TAG));
+        JSONObject responseObject = response.optJSONObject(RESPONSE_TAG);
+        if (responseObject == null) {
+            return null;
+        } else {
+            return JSONUtil.getIntegerList(responseObject.optJSONArray(ITEMS_TAG));
+        }
     }
 }

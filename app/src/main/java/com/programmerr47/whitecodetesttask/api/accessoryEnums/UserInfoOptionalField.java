@@ -21,9 +21,11 @@ public enum UserInfoOptionalField {
     domain,
     has_mobile,
     contacts,
-    connections, site,
+    connections,
+    site,
     education,
-    universities, schools,
+    universities,
+    schools,
     can_post,
     can_see_all_posts,
     can_see_audio,
@@ -36,6 +38,7 @@ public enum UserInfoOptionalField {
     counters,
     screen_name,
     maiden_name,
+    nickname,
     timezone,
     occupation,
     activities,
@@ -46,5 +49,15 @@ public enum UserInfoOptionalField {
     books,
     games,
     about,
-    quotes
+    quotes;
+
+    public static UserInfoOptionalField optValue(String name) {
+        try {
+            return valueOf(name);
+        } catch (NullPointerException e) {
+            return null;
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
 }

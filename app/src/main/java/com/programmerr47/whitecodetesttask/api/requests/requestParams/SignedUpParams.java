@@ -20,7 +20,9 @@ public class SignedUpParams implements RequestParams{
     }
 
     public void signUp(Account account) {
-        this.accessToken = account.getAccessToken();
+        if (account != null) {
+            this.accessToken = account.getAccessToken();
+        }
         this.version = Constants.API_VERSION;
     }
 

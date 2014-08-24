@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -40,6 +42,10 @@ public class LoginActivity extends Activity {
                 parseUrl(url);
             }
         });
+
+        CookieSyncManager.createInstance(this);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookie();
 
         List<Permissions> permissions = new ArrayList<Permissions>();
         permissions.add(Permissions.friends);

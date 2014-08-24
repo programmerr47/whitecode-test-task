@@ -7,5 +7,15 @@ package com.programmerr47.whitecodetesttask.api.accessoryEnums;
 public enum OccupationType {
     work,
     school,
-    university
+    university;
+
+    public static OccupationType optValue(String name) {
+        try {
+            return valueOf(name);
+        } catch (NullPointerException e) {
+            return null;
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
 }
