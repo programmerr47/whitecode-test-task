@@ -30,8 +30,8 @@ public class AuthorizationUtils {
 
     public static String[] parseRedirectUrl(String url) throws Exception {
         //url is something like http://api.vkontakte.ru/blank.html#access_token=66e8f7a266af0dd477fcd3916366b17436e66af77ac352aeb270be99df7deeb&expires_in=0&user_id=7657164
-        String access_token = Utils.extractPattern(url, ACCESS_TOKEN_PARAM_NAME + "=(.*?)&");
-        String user_id = Utils.extractPattern(url, USER_ID_PARAM_NAME + "=(\\d*)");
+        String access_token = Util.extractPattern(url, ACCESS_TOKEN_PARAM_NAME + "=(.*?)&");
+        String user_id = Util.extractPattern(url, USER_ID_PARAM_NAME + "=(\\d*)");
 
         if(user_id == null || user_id.length() == 0 || access_token == null || access_token.length() == 0) {
             throw new Exception("Failed to parse redirect url "+url);

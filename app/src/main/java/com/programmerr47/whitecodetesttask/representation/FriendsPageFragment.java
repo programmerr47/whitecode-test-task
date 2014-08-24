@@ -17,6 +17,7 @@ import com.programmerr47.whitecodetesttask.api.accessoryEnums.UserInfoOptionalFi
 import com.programmerr47.whitecodetesttask.api.requests.requestParams.FriendsGetParams;
 import com.programmerr47.whitecodetesttask.api.requests.requestParams.UsersGetParams;
 import com.programmerr47.whitecodetesttask.api.responseObjects.User;
+import com.programmerr47.whitecodetesttask.imageloading.ImageLoader;
 import com.programmerr47.whitecodetesttask.representation.adapters.SectionAdapter;
 import com.programmerr47.whitecodetesttask.representation.adapters.components.SectionAdapterElement;
 import com.programmerr47.whitecodetesttask.representation.tasks.ConvertUsersToAdapterElementsTask;
@@ -40,13 +41,13 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ListView mListView;
     private SectionAdapter mListAdapter;
+    private ImageLoader mImageLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.friend_list_layout, container, false);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.blue_bright, R.color.pink_bright, R.color.green_lime, R.color.orange_bright);
 
         mListView = (ListView) view.findViewById(R.id.friendsListView);
 
@@ -57,8 +58,14 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mListAdapter = new SectionAdapter(getActivity(), new ArrayList<SectionAdapterElement>());
+        mImageLoader = new ImageLoader(getActivity().getApplicationContext());
+        mListAdapter = new SectionAdapter(getActivity(), new ArrayList<SectionAdapterElement>(), mImageLoader);
+
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.blue_bright, R.color.pink_bright, R.color.green_lime, R.color.orange_bright);
+
         mListView.setAdapter(mListAdapter);
+        mListView.setFastScrollEnabled(true);
+        mListView.setFastScrollAlwaysVisible(true);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -86,11 +93,14 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
     }
 
     public void refreshList() {
+        mImageLoader.clearMemoryCache();
+
         List<FriendInfoOptionalField> fields = new ArrayList<FriendInfoOptionalField>();
         fields.add(FriendInfoOptionalField.nickname);
         fields.add(FriendInfoOptionalField.maiden_name);
         fields.add(FriendInfoOptionalField.online);
         fields.add(FriendInfoOptionalField.online_mobile);
+        fields.add(FriendInfoOptionalField.photo_100);
 
         FriendsGetParams params = new FriendsGetParams.Builder()
                 .setFields(fields)

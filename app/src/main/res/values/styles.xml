@@ -19,4 +19,7 @@
     <style name="ListItemTextLarge" parent="android:TextAppearance.Holo.Large">
     </style>
 
+    <style name="ListItemTextMedium" parent="android:TextAppearance.Holo.Medium">
+    </style>
+
 </resources>

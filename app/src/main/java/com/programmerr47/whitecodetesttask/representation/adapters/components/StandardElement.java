@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.programmerr47.whitecodetesttask.R;
 import com.programmerr47.whitecodetesttask.api.responseObjects.User;
+import com.programmerr47.whitecodetesttask.imageloading.ImageLoader;
 
 /**
  * @author Michael Spitsin
@@ -51,7 +52,7 @@ public class StandardElement implements SectionAdapterElement {
     }
 
     @Override
-    public void bindView(View view, int position) {
+    public void bindView(View view, ImageLoader imageLoader, int position) {
         if (view.getTag() == null) {
             throw new IllegalArgumentException("view must contains this own holder");
         }
@@ -59,7 +60,7 @@ public class StandardElement implements SectionAdapterElement {
         ViewHolder holder = (ViewHolder) view.getTag();
 
         if (holder.icon != null) {
-            //TODO
+            imageLoader.displayImage(mItemInfo.getPhoto100(), holder.icon);
         }
 
         if (holder.mobileFlagIcon != null) {

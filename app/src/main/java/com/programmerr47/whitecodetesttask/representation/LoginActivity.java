@@ -50,7 +50,6 @@ public class LoginActivity extends Activity {
         List<Permissions> permissions = new ArrayList<Permissions>();
         permissions.add(Permissions.friends);
 
-        Log.v("DEBUG", "url = " + AuthorizationUtils.getUrl(ApiConstants.API_KEY, permissions));
         mLoginWebView.loadUrl(AuthorizationUtils.getUrl(ApiConstants.API_KEY, permissions));
     }
 

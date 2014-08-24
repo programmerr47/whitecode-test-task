@@ -1,10 +1,12 @@
 package com.programmerr47.whitecodetesttask.representation.adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.programmerr47.whitecodetesttask.imageloading.ImageLoader;
 import com.programmerr47.whitecodetesttask.representation.adapters.components.PinnedElement;
 import com.programmerr47.whitecodetesttask.representation.adapters.components.SectionAdapterElement;
 import com.programmerr47.whitecodetesttask.representation.view.PinnedSectionListView;
@@ -20,9 +22,10 @@ public class SectionAdapter extends BindBaseAdapter implements PinnedSectionList
     private static final int ITEM_TYPES_COUNT = 2;
 
     private Context mContext;
+    private ImageLoader mImageLoader;
     private List<SectionAdapterElement> mItems;
 
-    public SectionAdapter(Context context, List<SectionAdapterElement> items) {
+    public SectionAdapter(Context context, List<SectionAdapterElement> items, ImageLoader imageLoader) {
         if (items == null) {
             throw new NullPointerException("items must be not null");
         }
@@ -31,8 +34,13 @@ public class SectionAdapter extends BindBaseAdapter implements PinnedSectionList
             throw new NullPointerException("context must be not null");
         }
 
+        if (imageLoader == null) {
+            throw new NullPointerException("imageLoader must be not null");
+        }
+
         mItems = items;
         mContext = context;
+        mImageLoader = imageLoader;
     }
 
     @Override
@@ -75,7 +83,7 @@ public class SectionAdapter extends BindBaseAdapter implements PinnedSectionList
     @Override
     protected void bindView(View view, int position) {
         SectionAdapterElement element = mItems.get(position);
-        element.bindView(view, position);
+        element.bindView(view, mImageLoader, position);
     }
 
     public void setItems(List<SectionAdapterElement> items) {

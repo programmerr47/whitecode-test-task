@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * @author Michael Spitsin
  * @since 2014-08-20
  */
-public class Utils {
+public class Util {
 
     public static String extractPattern(String string, String pattern){
         Pattern p = Pattern.compile(pattern);
@@ -31,9 +31,7 @@ public class Utils {
         StringWriter sw = new StringWriter();
         char[] buffer = new char[1024];
         try {
-            Log.v("UTILS", "InputStream = " + is);
             for (int n; (n = r.read(buffer)) != -1;) {
-                Log.v("UTILS", "buffer = " + Arrays.toString(buffer));
                 sw.write(buffer, 0, n);
             }
         }

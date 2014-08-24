@@ -4,6 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.programmerr47.whitecodetesttask.imageloading.ImageLoader;
+
 /**
  * Main class for all {@link com.programmerr47.whitecodetesttask.representation.adapters.SectionAdapter}
  * elements. All new types of adapter elements must extends this class of it subclasses and
@@ -45,7 +47,8 @@ public interface SectionAdapterElement {
      * Calls when another taken element is exists and it is needed to bind it (set up it).
      *
      * @param view given created of existing view
+     * @param imageLoader loader for images, this stuff used by elements that has images in their layout
      * @param position position of this view
      */
-    void bindView(View view, int position);
+    void bindView(View view, ImageLoader imageLoader, int position);
 }

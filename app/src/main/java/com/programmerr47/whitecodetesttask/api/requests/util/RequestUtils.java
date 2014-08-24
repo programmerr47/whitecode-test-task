@@ -2,7 +2,7 @@ package com.programmerr47.whitecodetesttask.api.requests.util;
 
 import android.util.Log;
 
-import com.programmerr47.whitecodetesttask.api.util.Utils;
+import com.programmerr47.whitecodetesttask.api.util.Util;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,18 +33,13 @@ public class RequestUtils {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept-Encoding", "gzip");
             int code=connection.getResponseCode();
-            Log.v(LOG_TAG, "code = " + code);
-            Log.v(LOG_TAG, "getContentEncoding = " + connection.getContentEncoding());
-            Log.v(LOG_TAG, "getRequestMethod = " + connection.getRequestMethod());
-            Log.v(LOG_TAG, "getResponseMessage = " + connection.getResponseMessage());
-            Log.v(LOG_TAG, "getInputStream = " + connection.getInputStream());
 
             InputStream is = new BufferedInputStream(connection.getInputStream(), 8192);
             String enc=connection.getHeaderField("Content-Encoding");
             if(enc!=null && enc.equalsIgnoreCase("gzip")) {
                 is = new GZIPInputStream(is);
             }
-            return new JSONObject(Utils.convertStreamToString(is));
+            return new JSONObject(Util.convertStreamToString(is));
         } catch (IOException e) {
             e.printStackTrace();
             return null;

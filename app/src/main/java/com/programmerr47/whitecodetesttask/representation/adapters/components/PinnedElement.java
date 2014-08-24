@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.programmerr47.whitecodetesttask.R;
+import com.programmerr47.whitecodetesttask.imageloading.ImageLoader;
 
 /**
  * @author Michael Spitsin
@@ -47,7 +48,7 @@ public class PinnedElement implements SectionAdapterElement{
     }
 
     @Override
-    public void bindView(View view, int position) {
+    public void bindView(View view, ImageLoader imageLoader, int position) {
         if (view.getTag() == null) {
             throw new IllegalArgumentException("view must contains this own holder");
         }

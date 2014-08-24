@@ -113,13 +113,12 @@ public class FriendsPageActivity extends Activity implements OnTaskFinishedListe
                 mAccount.setAccessToken(data.getStringExtra(LoginActivity.INTENT_RESULT_ACCESS_TOKEN));
                 mAccount.setUserId(data.getStringExtra(LoginActivity.INTENT_RESULT_USER_ID));
                 mAccount.save();
-                Log.v("REQUESTS", "Access token = " + mAccount.getAccessToken());
-                Log.v("REQUESTS", "User id = " + mAccount.getUserId());
-                //0af9a261917d796eaa9583efbd51f96e788f28a3b8b8c1c3996cae1b98a4ee5bbff408d0ef77076d7e1dc
-                //42284313
+
                 mUserShortInfoView.setText(R.string.LOADING);
                 mLogoutButton.setText(R.string.LOGOUT);
+
                 setUserShortInfo();
+
                 mFriendsPageFragment.setAccount(mAccount);
             }
         } else {
