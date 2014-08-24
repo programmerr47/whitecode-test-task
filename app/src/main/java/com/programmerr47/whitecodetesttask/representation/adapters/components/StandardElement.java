@@ -80,9 +80,16 @@ public class StandardElement implements SectionAdapterElement {
         }
 
         if (holder.fullName != null) {
-            String info = mItemInfo.getFirstName() + " " + mItemInfo.getNickName() + " " + mItemInfo.getLastName();
+            StringBuilder info = new StringBuilder(mItemInfo.getFirstName());
+
+            if ((mItemInfo.getNickName() != null) && !mItemInfo.getNickName().equals("")) {
+                info.append(" ").append(mItemInfo.getNickName());
+            }
+
+            info.append(" ").append(mItemInfo.getLastName());
+
             if ((mItemInfo.getMaidenName() != null) && !mItemInfo.getMaidenName().equals("")) {
-                info += " (" + mItemInfo.getMaidenName() + ")";
+                info.append(" (").append(mItemInfo.getMaidenName()).append(")");
             }
 
             holder.fullName.setText(info);

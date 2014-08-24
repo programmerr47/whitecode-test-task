@@ -10,6 +10,7 @@
     <com.programmerr47.whitecodetesttask.representation.view.PinnedSectionListView
         android:id="@+id/friendsListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>

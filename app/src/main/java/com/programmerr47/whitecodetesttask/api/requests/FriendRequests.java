@@ -8,6 +8,7 @@ import com.programmerr47.whitecodetesttask.api.util.JSONUtil;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class FriendRequests {
 
         JSONObject responseObject = response.optJSONObject(RESPONSE_TAG);
         if (responseObject == null) {
-            return null;
+            return new ArrayList<Integer>();
         } else {
             return JSONUtil.getIntegerList(responseObject.optJSONArray(ITEMS_TAG));
         }

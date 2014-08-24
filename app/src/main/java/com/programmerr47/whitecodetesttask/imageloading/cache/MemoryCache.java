@@ -1,7 +1,6 @@
 package com.programmerr47.whitecodetesttask.imageloading.cache;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -13,7 +12,7 @@ import java.util.Map;
  * @since 2014-08-24
  */
 public class MemoryCache {
-    private static final int MEMORY_SIZE_LIMIT = 2 * 1000 * 1000; //2MB
+    private static final int MEMORY_SIZE_LIMIT = 8 * 1000 * 1000; //8MB
 
     private Map<String, Bitmap> mCache = Collections.synchronizedMap(new LinkedHashMap<String, Bitmap>());
 

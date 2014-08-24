@@ -1,7 +1,5 @@
 package com.programmerr47.whitecodetesttask.representation.tasks;
 
-import android.content.Intent;
-
 import com.programmerr47.whitecodetesttask.api.Account;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendInfoOptionalField;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendsOrder;
@@ -64,6 +62,8 @@ public class GetFriendsInfoTask extends AsyncTaskWithListener<FriendsGetParams, 
                 }
 
                 return result;
+            } else if (friendIds == null){
+                return null;
             }
         }
 

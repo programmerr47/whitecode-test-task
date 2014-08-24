@@ -4,6 +4,8 @@
     <string name="app_name">WhitecodeTestTask</string>
 
     <string name="ABOUT">About</string>
+    <string name="CHECK_CONNECTION">Check your internet connection</string>
+    <string name="COMMING_SOON">You will see this in next version</string>
     <string name="LOADING">Loading...</string>
     <string name="LOGIN">Login</string>
     <string name="LOGIN_SHORT_INFORMATION_ALTERNATIVE">You not logged in vk.com</string>

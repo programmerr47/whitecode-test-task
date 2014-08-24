@@ -42,7 +42,7 @@ import android.widget.SectionIndexer;
  */
 public class PinnedSectionListView extends ListView {
 
-    //-- inner classes
+    // inner classes
 
     /** List adapter to be implemented for being used with PinnedSectionListView adapter. */
     public static interface PinnedSectionListAdapter extends ListAdapter {
@@ -122,7 +122,7 @@ public class PinnedSectionListView extends ListView {
                     destroyPinnedShadow();
                 }
             }
-        };
+        }
 
     };
 
@@ -130,7 +130,8 @@ public class PinnedSectionListView extends ListView {
     private final DataSetObserver mDataSetObserver = new DataSetObserver() {
         @Override public void onChanged() {
             recreatePinnedShadow();
-        };
+        }
+
         @Override public void onInvalidated() {
             recreatePinnedShadow();
         }

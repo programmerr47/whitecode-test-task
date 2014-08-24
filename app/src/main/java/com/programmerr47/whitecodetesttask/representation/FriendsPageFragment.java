@@ -6,23 +6,18 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CursorAdapter;
 import android.widget.ListView;
 
 import com.programmerr47.whitecodetesttask.R;
 import com.programmerr47.whitecodetesttask.api.Account;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.FriendInfoOptionalField;
-import com.programmerr47.whitecodetesttask.api.accessoryEnums.UserInfoOptionalField;
 import com.programmerr47.whitecodetesttask.api.requests.requestParams.FriendsGetParams;
-import com.programmerr47.whitecodetesttask.api.requests.requestParams.UsersGetParams;
 import com.programmerr47.whitecodetesttask.api.responseObjects.User;
 import com.programmerr47.whitecodetesttask.imageloading.ImageLoader;
 import com.programmerr47.whitecodetesttask.representation.adapters.SectionAdapter;
 import com.programmerr47.whitecodetesttask.representation.adapters.components.SectionAdapterElement;
 import com.programmerr47.whitecodetesttask.representation.tasks.ConvertUsersToAdapterElementsTask;
 import com.programmerr47.whitecodetesttask.representation.tasks.GetFriendsInfoTask;
-import com.programmerr47.whitecodetesttask.representation.tasks.GetUserInfoTask;
 import com.programmerr47.whitecodetesttask.representation.tasks.OnTaskFinishedListener;
 
 import java.util.ArrayList;
@@ -34,12 +29,14 @@ import java.util.List;
  * @author Michael Spitsin
  * @since 2014-08-20
  */
-public class FriendsPageFragment extends Fragment implements OnTaskFinishedListener{
+public class FriendsPageFragment extends Fragment implements OnTaskFinishedListener {
 
     private Account mAccount;
+    private OnRefreshingStateChangeListener mListener;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ListView mListView;
+
     private SectionAdapter mListAdapter;
     private ImageLoader mImageLoader;
 
@@ -48,7 +45,6 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
         View view = inflater.inflate(R.layout.friend_list_layout, container, false);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
-
         mListView = (ListView) view.findViewById(R.id.friendsListView);
 
         return view;
@@ -70,6 +66,10 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                if (mListener != null) {
+                    mListener.onRefreshStarted();
+                }
+
                 refreshList();
             }
         });
@@ -111,6 +111,10 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
         task.execute(params);
     }
 
+    public void setOnRefreshingStateChangeListener(OnRefreshingStateChangeListener listener) {
+        mListener = listener;
+    }
+
     @Override
     public void onTaskFinished(String taskName, Object extraObject) {
         if (GetFriendsInfoTask.class.getName().equals(taskName)) {
@@ -120,6 +124,10 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
                 ConvertUsersToAdapterElementsTask task = new ConvertUsersToAdapterElementsTask();
                 task.setOnTaskFinishedListener(this);
                 task.execute(allFriends);
+            } else {
+                if (mSwipeRefreshLayout != null) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
             }
         } else if (ConvertUsersToAdapterElementsTask.class.getName().equals(taskName)) {
             if (extraObject != null) {
@@ -130,5 +138,9 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
                 }
             }
         }
+    }
+
+    public interface OnRefreshingStateChangeListener {
+        void onRefreshStarted();
     }
 }

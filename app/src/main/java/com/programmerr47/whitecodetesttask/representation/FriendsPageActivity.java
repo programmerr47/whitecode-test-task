@@ -3,19 +3,20 @@ package com.programmerr47.whitecodetesttask.representation;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.programmerr47.whitecodetesttask.R;
 import com.programmerr47.whitecodetesttask.api.Account;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.UserInfoOptionalField;
 import com.programmerr47.whitecodetesttask.api.requests.requestParams.UsersGetParams;
 import com.programmerr47.whitecodetesttask.api.responseObjects.User;
+import com.programmerr47.whitecodetesttask.representation.tasks.AsyncTaskWithListener;
 import com.programmerr47.whitecodetesttask.representation.tasks.GetUserInfoTask;
 import com.programmerr47.whitecodetesttask.representation.tasks.OnTaskFinishedListener;
 
@@ -30,7 +31,7 @@ import java.util.List;
  * @author Michael Spitsin
  * @since 2014-08-20
  */
-public class FriendsPageActivity extends Activity implements OnTaskFinishedListener, View.OnClickListener {
+public class FriendsPageActivity extends Activity implements OnTaskFinishedListener, View.OnClickListener, FriendsPageFragment.OnRefreshingStateChangeListener {
 
     private static final int REQUEST_LOGIN_CODE = 47;
 
@@ -63,6 +64,7 @@ public class FriendsPageActivity extends Activity implements OnTaskFinishedListe
         mLogoutButton.setOnClickListener(this);
 
         mFriendsPageFragment = (FriendsPageFragment) getFragmentManager().findFragmentById(R.id.friendsPageFragment);
+        mFriendsPageFragment.setOnRefreshingStateChangeListener(this);
 
         if (!mAccount.isCorrect()) {
             openLoginPage();
@@ -72,19 +74,17 @@ public class FriendsPageActivity extends Activity implements OnTaskFinishedListe
     }
 
     private void setUserShortInfo() {
-        if (getString(R.string.LOADING).equals(mUserShortInfoView.getText())) {
-            List<UserInfoOptionalField> fields = new ArrayList<UserInfoOptionalField>();
-            fields.add(UserInfoOptionalField.nickname);
-            fields.add(UserInfoOptionalField.maiden_name);
+        List<UserInfoOptionalField> fields = new ArrayList<UserInfoOptionalField>();
+        fields.add(UserInfoOptionalField.nickname);
+        fields.add(UserInfoOptionalField.maiden_name);
 
-            UsersGetParams params = new UsersGetParams.Builder()
-                    .setFields(fields)
-                    .build();
+        UsersGetParams params = new UsersGetParams.Builder()
+                .setFields(fields)
+                .build();
 
-            GetUserInfoTask task = new GetUserInfoTask(mAccount);
-            task.setOnTaskFinishedListener(this);
-            task.execute(params);
-        }
+        GetUserInfoTask task = new GetUserInfoTask(mAccount);
+        task.setOnTaskFinishedListener(this);
+        task.execute(params);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class FriendsPageActivity extends Activity implements OnTaskFinishedListe
     }
 
     private void openAboutPage() {
-        //TODO
+        Toast.makeText(this, R.string.COMMING_SOON, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -141,13 +141,24 @@ public class FriendsPageActivity extends Activity implements OnTaskFinishedListe
             if ((extraObject != null) && (mUserShortInfoView != null)) {
                 User currentlyLoggedUserInfo = (User) extraObject;
 
-                String info = currentlyLoggedUserInfo.getFirstName() + " " + currentlyLoggedUserInfo.getNickName() + " " + currentlyLoggedUserInfo.getLastName();
+                StringBuilder info = new StringBuilder(currentlyLoggedUserInfo.getFirstName());
+
+                if ((currentlyLoggedUserInfo.getNickName() != null) && !currentlyLoggedUserInfo.getNickName().equals("")) {
+                    info.append(" ").append(currentlyLoggedUserInfo.getNickName());
+                }
+
+                info.append(" ").append(currentlyLoggedUserInfo.getLastName());
+
                 if ((currentlyLoggedUserInfo.getMaidenName() != null) && !currentlyLoggedUserInfo.getMaidenName().equals("")) {
-                    info += " (" + currentlyLoggedUserInfo.getMaidenName() + ")";
+                    info.append(" (").append(currentlyLoggedUserInfo.getMaidenName()).append(")");
                 }
 
                 mUserShortInfoView.setText(info);
+            } else if (mUserShortInfoView != null) {
+                mUserShortInfoView.setText(R.string.YOU_ARE_NOT_LOGIN);
             }
+        } else if (AsyncTaskWithListener.CONNECTION_TASK_ERROR.equals(taskName)) {
+            mUserShortInfoView.setText(R.string.CHECK_CONNECTION);
         }
     }
 
@@ -161,5 +172,10 @@ public class FriendsPageActivity extends Activity implements OnTaskFinishedListe
 
             openLoginPage();
         }
+    }
+
+    @Override
+    public void onRefreshStarted() {
+        setUserShortInfo();
     }
 }

@@ -1,7 +1,5 @@
 package com.programmerr47.whitecodetesttask.api.requests.util;
 
-import android.util.Log;
-
 import com.programmerr47.whitecodetesttask.api.util.Util;
 
 import org.json.JSONException;
@@ -25,14 +23,13 @@ public class RequestUtils {
         HttpURLConnection connection=null;
         try{
             connection = (HttpURLConnection)new URL(url).openConnection();
-            connection.setConnectTimeout(30000);
-            connection.setReadTimeout(30000);
+            connection.setConnectTimeout(6000);
+            connection.setReadTimeout(6000);
             connection.setUseCaches(false);
             connection.setDoOutput(false);
             connection.setDoInput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept-Encoding", "gzip");
-            int code=connection.getResponseCode();
 
             InputStream is = new BufferedInputStream(connection.getInputStream(), 8192);
             String enc=connection.getHeaderField("Content-Encoding");

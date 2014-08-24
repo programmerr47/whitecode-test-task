@@ -1,11 +1,8 @@
 package com.programmerr47.whitecodetesttask.representation.tasks;
 
-import android.os.AsyncTask;
-
 import com.programmerr47.whitecodetesttask.api.Account;
 import com.programmerr47.whitecodetesttask.api.requests.APIRequests;
 import com.programmerr47.whitecodetesttask.api.requests.UsersRequests;
-import com.programmerr47.whitecodetesttask.api.requests.requestParams.FriendsGetParams;
 import com.programmerr47.whitecodetesttask.api.requests.requestParams.UsersGetParams;
 import com.programmerr47.whitecodetesttask.api.responseObjects.User;
 
@@ -33,6 +30,8 @@ public class GetUserInfoTask extends AsyncTaskWithListener<UsersGetParams, Void,
             List<User> users = usersRequests.get(params);
             if ((users != null) && (users.size() > 0)) {
                 return users.get(0);
+            } else if (users == null) {
+                connectionError();
             }
         }
 

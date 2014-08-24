@@ -21,17 +21,18 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="Loading..."
+            android:textColor="@color/gray_dark_very"
             style="@android:style/TextAppearance.Holo.Medium"/>
 
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_half"
-            android:layout_marginTop="@dimen/spacing_half"
-            android:layout_marginBottom="@dimen/spacing_half"
-            android:layout_marginRight="@dimen/spacing_default"
-            android:text="@string/LOGOUT"/>
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:text="@string/LOGOUT"
+            android:textColor="@color/gray_dark_very"
+            android:background="@drawable/flat_button"/>
 
     </LinearLayout>
 

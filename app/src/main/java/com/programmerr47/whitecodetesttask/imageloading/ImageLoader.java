@@ -2,9 +2,8 @@ package com.programmerr47.whitecodetesttask.imageloading;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.*;
+import android.os.Handler;
 import android.os.Process;
-import android.util.Log;
 import android.util.Pair;
 import android.widget.ImageView;
 

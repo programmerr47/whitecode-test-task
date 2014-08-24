@@ -4,15 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.programmerr47.whitecodetesttask.R;
-import com.programmerr47.whitecodetesttask.api.util.AuthorizationUtils;
 import com.programmerr47.whitecodetesttask.api.accessoryEnums.Permissions;
+import com.programmerr47.whitecodetesttask.api.util.AuthorizationUtils;
 import com.programmerr47.whitecodetesttask.api.util.Constants;
 import com.programmerr47.whitecodetesttask.representation.util.ApiConstants;
 

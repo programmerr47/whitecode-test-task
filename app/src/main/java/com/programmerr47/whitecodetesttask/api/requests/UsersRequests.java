@@ -8,6 +8,7 @@ import com.programmerr47.whitecodetesttask.api.util.Constants;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,14 @@ public class UsersRequests {
 
         String url = Constants.VK_BASE_URL + USERS_GET_METHOD_NAME + Constants.REQUEST_PARAMS_BEGIN_SYMBOL + params;
         JSONObject response = RequestUtils.sendGetRequest(url);
+
+        if (response == null) {
+            return null;
+        }
+
+        if (response.optJSONArray(RESPONSE_TAG) == null) {
+            return new ArrayList<User>();
+        }
 
         return User.getFromJSONArray(response.optJSONArray(RESPONSE_TAG));
     }
