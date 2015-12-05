@@ -95,7 +95,7 @@ public class FriendsPageFragment extends Fragment implements OnTaskFinishedListe
     public void refreshList() {
         mImageLoader.clearMemoryCache();
 
-        List<FriendInfoOptionalField> fields = new ArrayList<FriendInfoOptionalField>();
+        List<FriendInfoOptionalField> fields = new ArrayList<>();
         fields.add(FriendInfoOptionalField.nickname);
         fields.add(FriendInfoOptionalField.maiden_name);
         fields.add(FriendInfoOptionalField.online);
